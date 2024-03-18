@@ -28,4 +28,10 @@ Dalam perubahan pada fungsi `handle_connection`, saya menambahkan cara baru buat
 
 ### Commit 5
 
-`ThreadPool` itu seperti tim `workers` yang terdiri dari beberapa anggota atau thread. Awalnya, kita tentukan berapa banyak anggota timnya. Lalu, kita kasih cara buat mereka kesempatan sama yang memberikan `workers`, pake sesuatu yang disebut `channel`. Setiap kali ada kerjaan, kerjaan itu dikirim lewat `channel` ke salah satu anggota tim untuk dikerjakan. Sistemnya diatur supaya setiap kerjaan cuma bisa dikerjain sama satu anggota tim, jadi ga ada yang rebutan kerjaan. Dengan begini, banyak kerjaan bisa dikerjain bareng-bareng, bikin proses kerja jadi lebih cepat dan efisien.
+`ThreadPool` itu seperti tim `Worker` yang terdiri dari beberapa anggota atau thread. Awalnya, kita tentukan berapa banyak anggota timnya. Lalu, kita kasih cara buat mereka kesempatan sama yang memberikan `Worker`, pake sesuatu yang disebut `channel`. Setiap kali ada `Worker`, `Worker` itu dikirim lewat `channel` ke salah satu anggota tim untuk dikerjakan. Sistemnya diatur supaya setiap `Worker` cuma bisa dikerjain sama satu anggota tim, jadi ga ada yang rebutan `Worker`. Dengan begini, banyak `Worker` bisa dikerjakan bareng-bareng, bikin proses `Worker` jadi lebih cepat dan efisien.
+
+---
+
+### Commit Bonus Reflection
+
+Ada saran untuk memakai method `build` daripada `new` jika mau membuat `ThreadPool`. Yang saya tahu, kalau pakai `new` threadnya sedikit, bisa gagal. Tapi, sebenarnya itu tidak bener soalnya `new` itu harusnya selalu `Ok`. Jadi, lebih baik ganti ke `build` yang bisa kasih tahu sukses atau gagal lewat `Result`. Jika seperti itu, kita bisa langsung liat hasilnya dengan buka `Result` itu pake `unwrap` buat tau bagaimana hasil akhirnya.
