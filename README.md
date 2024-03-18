@@ -17,3 +17,9 @@ Fungsi `handle_connection` bekerja mengatur aliran data dari TCP. Caranya, fungs
 Saya memodifikasi kode dengan menambahkan penggunaan pernyataan if ketika menetapkan nilai untuk baris status respons dan nama file HTML, tujuannya adalah untuk mengurangi jumlah kode yang diulang-ulang.
 
 ![Commit 3 screen capture](assets/images/commit3.png)
+
+---
+
+### Commit 4
+
+Dalam perubahan pada fungsi `handle_connection`, saya menambahkan cara baru buat mengurus permintaan dari pengguna, khususnya buat yang `GET /sleep HTTP/1.1`. Awalnya saya masih baca permintaan dari pengguna seperti biasa, untuk sekarang saya pakai cara namanya pencocokan pola untuk maksud apa yang diminta. Kalo ada yang minta halaman utama pake `GET / HTTP/1.1`, saya kasih mereka halaman `hello.html` dengan status `OK`, dan kalo ada yang minta `GET /sleep HTTP/1.1`, artinya mereka minta saya buat `sleep` dulu selama 10 detik sebelum memberikan balasan. Lalu baru kasih mereka halaman `hello.html` sama status `OK`. Jika permintaannya tidak cocok sama yang saya kenal, saya berikan halaman `404.html`, artinya halaman yang diminta tidak ada. Setelah saya tau mau kasih apa, saya baca isi halaman yang ingin ditampilkan, hitung panjangnya, dan susun balasan HTTPnya. Terakhir, saya mengirim balasan itu ke pengguna lewat koneksi yang sama. Jadi, yang baru dari fungsi ini adalah, saya bisa bikin server kita `sleep` lebih sebentar jika ada yang minta khusus, selain itu tetap jalan seperti biasa.
