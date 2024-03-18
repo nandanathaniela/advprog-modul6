@@ -9,3 +9,11 @@ Fungsi `handle_connection` bekerja mengatur aliran data dari TCP. Caranya, fungs
 ### Commit 2
 
 ![Commit 2 screen capture](assets/images/commit2.png)
+
+---
+
+### Commit 3
+
+Saya memodifikasi kode dengan menambahkan penggunaan pernyataan if ketika menetapkan nilai untuk baris status respons dan nama file HTML, tujuannya adalah untuk mengurangi jumlah kode yang diulang-ulang.
+
+![Commit 3 screen capture](assets/images/commit3.png)
